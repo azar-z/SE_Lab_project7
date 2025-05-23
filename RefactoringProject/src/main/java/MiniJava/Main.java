@@ -12,7 +12,7 @@ public class Main {
         Parser parser = new Parser();
         try {
             // start parsing
-            parser.startParse(new Scanner(new File("src/main/resources/code")));
+            parser.startParse(new Scanner(new File("RefactoringProject/src/main/resources/code")));
         } catch (FileNotFoundException e) {
             ErrorHandler.printError(e.getMessage());
         }
