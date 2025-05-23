@@ -16,4 +16,9 @@
 
 در کلاس CodeGenerator تعداد زیادی switch روی SymbolTypeهای Symbolها قرار داشت که در صورت bool یا int بودن varType متناسب با آن را مشخص می‌کرد. ما سعی کردمی با استفاده از state pattern این switchها را به یک method call تبدیل کنیم. برای این کار  SymbolType را از enum به abstract class تغییر دادیم و به ازای هر نوع آن یک کلاس فرزند برای آن ساختیم و تعیین varType متناسب را به کلاس‌های فرزند سپردیم. با این کار تعداد زیادی از switchهای CodeGenerator از بین رفتند.
 
+### مورد چهارم: Separate Query from Modifier
+
+در کلاس Memory تابع saveMemory عملا دو عملیات متفاوت نگه داشتن یک واحد حافظه برای یک بلوک کد و همچنین برگرداندن آدرس آن بلوک از حافظه را بر عهده دارد. با جدا کردن query از این تابع و افزودن تابع getMemorySize به کلاس Memory، اصل single responsibility را رعایت کردیم.
+بنابراین تابع اولیه تنها عمل modify و تابع جدید تنها عمل query را انجام می‌دهد.
+این تابع تنها در CodeGenerator استفاده شده بود که تغییرات لازم مربوط به آن را نیز اعمال کردیم.
 
