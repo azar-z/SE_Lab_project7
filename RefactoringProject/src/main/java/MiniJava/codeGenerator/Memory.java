@@ -20,41 +20,76 @@ public class Memory {
         lastDataAddress = stratDataMemoryAddress;
     }
 
+    // getters and setters for every field:
+    public ArrayList<_3AddressCode> getCodeBlock() {
+        return codeBlock;
+    }
+    public void setCodeBlock(ArrayList<_3AddressCode> codeBlock) {
+        this.codeBlock = codeBlock;
+    }
+
+    public int getLastTempIndex() {
+        return lastTempIndex;
+    }
+    public void setLastTempIndex(int lastTempIndex) {
+        this.lastTempIndex = lastTempIndex;
+    }
+
+    public int getLastDataAddress() {
+        return lastDataAddress;
+    }
+    public void setLastDataAddress(int lastDataAddress) {
+        this.lastDataAddress = lastDataAddress;
+    }
+
+    public int getStartTempMemoryAddress() {
+        return stratTempMemoryAddress;
+    }
+    public int getStartDataMemoryAddress() {
+        return stratDataMemoryAddress;
+    }
+    public int getDataSize() {
+        return dataSize;
+    }
+    public int getTempSize() {
+        return tempSize;
+    }
+
     public int getTemp() {
-        lastTempIndex += tempSize;
-        return lastTempIndex - tempSize;
+        setLastTempIndex(getLastTempIndex() + getTempSize());
+        return getLastTempIndex() - getTempSize();
     }
 
     public int getDateAddress() {
-        lastDataAddress += dataSize;
-        return lastDataAddress - dataSize;
+        setLastDataAddress(getLastDataAddress() + getDataSize());
+        return getLastDataAddress() - getDataSize();
     }
 
     public void saveMemory() {
-        codeBlock.add(new _3AddressCode());
+        getCodeBlock().add(new _3AddressCode());
     }
 
     public int getMemorySize() {
-        return codeBlock.size() - 1;
+        return getCodeBlock().size() - 1;
     }
 
     public void add3AddressCode(Operation op, Address opr1, Address opr2, Address opr3) {
-        codeBlock.add(new _3AddressCode(op, opr1, opr2, opr3));
+        getCodeBlock().add(new _3AddressCode(op, opr1, opr2, opr3));
     }
 
     public void add3AddressCode(int i, Operation op, Address opr1, Address opr2, Address opr3) {
-        codeBlock.remove(i);
-        codeBlock.add(i, new _3AddressCode(op, opr1, opr2, opr3));
+        getCodeBlock().remove(i);
+        getCodeBlock().add(i, new _3AddressCode(op, opr1, opr2, opr3));
     }
 
     public int getCurrentCodeBlockAddress() {
-        return codeBlock.size();
+        return getCodeBlock().size();
     }
 
     public void pintCodeBlock() {
         System.out.println("Code Block");
-        for (int i = 0; i < codeBlock.size(); i++) {
-            System.out.println(i + " : " + codeBlock.get(i).toString());
+        for (int i = 0; i < getCodeBlock().size(); i++) {
+            System.out.println(i + " : " + getCodeBlock().get(i).toString());
         }
     }
 }
