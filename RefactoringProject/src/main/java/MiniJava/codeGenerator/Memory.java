@@ -24,6 +24,7 @@ public class Memory {
     public ArrayList<_3AddressCode> getCodeBlock() {
         return codeBlock;
     }
+
     public void setCodeBlock(ArrayList<_3AddressCode> codeBlock) {
         this.codeBlock = codeBlock;
     }
@@ -31,6 +32,7 @@ public class Memory {
     public int getLastTempIndex() {
         return lastTempIndex;
     }
+
     public void setLastTempIndex(int lastTempIndex) {
         this.lastTempIndex = lastTempIndex;
     }
@@ -38,6 +40,7 @@ public class Memory {
     public int getLastDataAddress() {
         return lastDataAddress;
     }
+
     public void setLastDataAddress(int lastDataAddress) {
         this.lastDataAddress = lastDataAddress;
     }
@@ -45,12 +48,15 @@ public class Memory {
     public int getStartTempMemoryAddress() {
         return stratTempMemoryAddress;
     }
+
     public int getStartDataMemoryAddress() {
         return stratDataMemoryAddress;
     }
+
     public int getDataSize() {
         return dataSize;
     }
+
     public int getTempSize() {
         return tempSize;
     }
@@ -112,14 +118,18 @@ class _3AddressCode {
     }
 
     public String toString() {
-        if (operation == null) return "";
+        if (operation == null)
+            return "";
         StringBuffer res = new StringBuffer("(");
         res.append(operation.toString()).append(",");
-        if (Operand1 != null) res.append(Operand1.toString());
+        if (Operand1 != null)
+            res.append(Operand1.toString());
         res.append(",");
-        if (Operand2 != null) res.append(Operand2.toString());
+        if (Operand2 != null)
+            res.append(Operand2.toString());
         res.append(",");
-        if (Operand3 != null) res.append(Operand3.toString());
+        if (Operand3 != null)
+            res.append(Operand3.toString());
         res.append(")");
 
         return res.toString();
